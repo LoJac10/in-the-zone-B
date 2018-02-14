@@ -37,7 +37,6 @@ int lcdPick(int line, char * leftOption, char * rightOption) {
     }
     lcdClear();
     return choice;
-
 }
 
 
@@ -70,7 +69,6 @@ int lcdMenu(int line, string * options, int size) {
             displayLCDChar(line, 1, '<');
             displayLCDChar(line, 14, '>');
 		}
-
 		prev_choice = choice;
         wait1Msec(140);
 	}
@@ -80,7 +78,7 @@ int lcdMenu(int line, string * options, int size) {
 
 
 void lcdStartup() {
-	  bLCDBacklight = true;
+	bLCDBacklight = true;
     lcdClear();
 
     displayLCDCenteredString(0, "Fast  Boye");
@@ -95,7 +93,6 @@ void lcdStartup() {
  * Run in pre_auton();
  **/
 void robotConfigure() {
-
     displayLCDCenteredString(0, "Match Type");
     string matchTypes[] = { "Standard", "Driver", "Prog", "Rerun" };
     match.type = lcdMenu(1, matchTypes, 4);
@@ -107,7 +104,6 @@ void robotConfigure() {
         match.alliance = lcdPick(1, "Red", "Blue");
         wait1Msec(500);
     }
-
     displayLCDCenteredString(0, "Routine");
     // Menu Tree based on Match Type
     switch(match.type) {
@@ -119,6 +115,4 @@ void robotConfigure() {
             break;
         default: break;
     }
-
-
 }
